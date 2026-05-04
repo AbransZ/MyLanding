@@ -1,6 +1,12 @@
 package com.abransz.mypersonalpage.Main
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,19 +17,26 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import mypersonalpage.composeapp.generated.resources.Res
+import mypersonalpage.composeapp.generated.resources.arrow_down
+import org.jetbrains.compose.resources.painterResource
 
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -42,7 +55,13 @@ fun LandingPage() {
             verticalArrangement = Arrangement.Center
         ) {
 
-            item { Text("Android & KMP Engeneer", fontSize = 18.sp, color = MaterialTheme.colorScheme.onSecondary) }
+            item {
+                Text(
+                    "Android & KMP Engeneer",
+                    fontSize = 18.sp,
+                    color = MaterialTheme.colorScheme.onSecondary
+                )
+            }
             item { Modifier.height(15.dp) }
             item { Text("Joseph Nieves", fontSize = 60.sp) }
             item { Modifier.height(15.dp) }
@@ -56,15 +75,35 @@ fun LandingPage() {
             item { Spacer(Modifier.height(24.dp)) }
 
             item {
-                Row(horizontalArrangement = Arrangement.Center,modifier = Modifier.fillMaxWidth()) {
-                    Button(onClick = {}) {
-                        Text("Explore Work")
+                Column(
+                    Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Button(onClick = {}) {
+                            Text("Explore Work")
+                        }
+                        Spacer(Modifier.width(10.dp))
+                        OutlinedButton(
+                            onClick = {},
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.secondary)
+                        ) {
+                            Text("Technical Task")
+                        }
                     }
-                    Spacer(Modifier.width(10.dp))
-                    OutlinedButton(onClick = {}, colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.secondary)) {
-                        Text("Technical Task")
+                    Spacer(Modifier.height(40.dp))
+                    val scale by rememberInfiniteTransition(label="").animateFloat(
+                        0.8f, 1.2f, infiniteRepeatable(tween(800), RepeatMode.Reverse), label="")
+                    IconButton(onClick = {}, modifier = Modifier.width(100.dp)) {
+                        Icon(painterResource(Res.drawable.arrow_down), contentDescription = "arrow_down",
+                            Modifier.scale(scale))
                     }
                 }
+
             }
 
         }
