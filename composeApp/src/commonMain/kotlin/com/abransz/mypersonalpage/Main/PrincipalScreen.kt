@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import mypersonalpage.composeapp.generated.resources.Res
 import mypersonalpage.composeapp.generated.resources.arrow_down
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 
