@@ -56,16 +56,19 @@ fun LandingPage() {
         ) {
 
             item {
+                Spacer(Modifier.height(250.dp))
                 Text(
                     "Android & KMP Engeneer",
                     fontSize = 18.sp,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
+                Spacer(Modifier.height(50.dp))
             }
             item { Modifier.height(15.dp) }
             item { Text("Joseph Nieves", fontSize = 60.sp) }
             item { Modifier.height(15.dp) }
             item {
+                Spacer(Modifier.height(50.dp))
                 Text(
                     "Architecting fluid, cross-platform mobile experiences with \n Kotlin Multiplatform and Jetpack Compose. Focused on performance,\n precision, and the future of Android.",
                     fontSize = 20.sp,
@@ -96,15 +99,24 @@ fun LandingPage() {
                         }
                     }
                     Spacer(Modifier.height(40.dp))
-                    val scale by rememberInfiniteTransition(label="").animateFloat(
-                        0.8f, 1.2f, infiniteRepeatable(tween(800), RepeatMode.Reverse), label="")
+                    val scale by rememberInfiniteTransition(label = "").animateFloat(
+                        0.8f, 1.2f, infiniteRepeatable(tween(800), RepeatMode.Reverse), label = ""
+                    )
                     IconButton(onClick = {}, modifier = Modifier.width(100.dp)) {
-                        Icon(painterResource(Res.drawable.arrow_down), contentDescription = "arrow_down",
-                            Modifier.scale(scale))
+                        Icon(
+                            painterResource(Res.drawable.arrow_down),
+                            contentDescription = "arrow_down",
+                            Modifier.scale(scale)
+                        )
                     }
+                    Spacer(Modifier.height(50.dp))
                 }
-
+                Spacer(Modifier.height(120.dp))
             }
+            item {
+                ProjectsScreen()
+            }
+
 
         }
     }
