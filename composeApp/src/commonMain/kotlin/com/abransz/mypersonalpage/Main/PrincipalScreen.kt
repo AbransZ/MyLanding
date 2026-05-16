@@ -112,7 +112,7 @@ fun LandingPage() {
                     }
                     Spacer(Modifier.height(50.dp))
                 }
-                Spacer(Modifier.height(120.dp))
+                Spacer(Modifier.height(400.dp))
             }
             item {
                 ProjectsScreen()
